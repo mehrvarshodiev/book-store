@@ -1,0 +1,438 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-color-1: #8da784;
+  --search-box-bg-color: #e8ebe8;
+  --text-color1: #050504;
+  --text-color2: #b6b6b6;
+  --text-color3: #7e7b7b;
+  --white-color: #fff;
+  --bg-color-2: #be8f3d;
+  --bg-color-3: #0875f3;
+  --bg-color-4: #885c0f;
+  --bg-color-5: #87ceeb;
+  --bg-color-6: #008100;
+  --bg-color-7: #008b8b;
+  --active-text-color: #8753ff;
+  --medium-size: 16px;
+  --ml-size: 20px;
+  --large-size: 24px;
+  --extra-large-size: 28px;
+  --2-extra-large-size: 32px;
+}
+
+.container {
+  width: 100%;
+  max-width: 2100px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.modal_overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 666;
+  transition: all .3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal_overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal_box {
+  width: 550px;
+  /* height: 450px; */
+  background: var(--white-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 777;
+  border-radius: 5px;
+}
+
+.modal_box>form {
+  border-radius: 5px;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 20px 25px;
+}
+
+.modal_box form>h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--large-size);
+  border-bottom: 1px dotted var(--bg-color-3);
+  padding-bottom: 10px;
+  color: var(--bg-color-3);
+}
+
+.form_input_content label {
+  display: block;
+  margin: 15px 0 7px 0;
+  font-family: cursive;
+  color: var(--text-color3);
+}
+
+.form_input_content input {
+  padding: 8px 10px;
+  width: 100%;
+  font-size: var(--medium-size);
+  border: 1px solid var(--text-color1);
+  border-radius: 5px;
+  outline: none;
+}
+
+.form_input_content input::placeholder {
+  color: var(--text-color1);
+}
+
+.form_input_content input:focus {
+  border: 2px solid var(--bg-color-3);
+  color: var(--bg-color-3);
+}
+
+.form_input_content input:focus::placeholder {
+  color: var(--bg-color-3);
+  caret-color: var(--bg-color-3);
+}
+
+.form_input_content .submit_btn {
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin: 20px 0 5px 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: var(--ml-size);
+  text-transform: uppercase;
+  font-weight: 500;
+  background: var(--bg-color-3);
+  border: none;
+  color: var(--white-color);
+  transition: all .3s ease-in;
+}
+
+.form_input_content .submit_btn:hover {
+  opacity: 0.85;
+}
+
+.form_input_content .submit_btn:active {
+  transform: scale(0.98);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 555;
+  width: 100%;
+  height: 120px;
+  background: var(--bg-color-1);
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header .logo {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: var(--text-color1);
+  font-size: var(--2-extra-large-size);
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in;
+  padding: 0;
+}
+
+.header .logo:hover {
+  opacity: 0.8;
+  border-bottom: 2px solid var(--active-text-color);
+  color: var(--active-text-color);
+}
+
+.header .right_blog {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+label[for='author'] {
+  color: var(--text-color1);
+  font-size: var(--large-size);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+label[for='author'].active {
+  color: var(--active-text-color);
+  font-weight: 500;
+}
+
+input[type='checkbox'] {
+  accent-color: var(--active-text-color);
+  width: 20px;
+  height: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#search_input {
+  width: 160px;
+  margin: 0 20px;
+}
+
+#search_input:focus {
+  background: var(--search-box-bg-color);
+  caret-color: var(--active-text-color);
+  color: var(--active-text-color);
+  border-color: var(--active-text-color);
+}
+
+#search_input:focus::placeholder {
+  color: var(--active-text-color);
+}
+
+#search_input,
+.btn {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--text-color1);
+  padding: 8px 12px;
+  font-size: var(--medium-size);
+  color: var(--text-color1);
+  transition: all 0.2s ease-out;
+}
+
+.add_btn {
+  text-transform: capitalize;
+  cursor: pointer;
+  color: var(--white-color);
+  background: var(--text-color1);
+  border-color: var(--text-color1);
+}
+
+.add_btn:hover {
+  opacity: 0.75;
+}
+
+.add_btn:active {
+  background: var(--white-color);
+  border-color: var(--text-color1);
+  color: var(--text-color1);
+}
+
+.usd_price {
+  margin-left: 20px;
+  color: var(--text-color1);
+  font-size: var(--extra-large-size);
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 35px;
+}
+
+.main {
+  width: 100%;
+  padding: 40px 120px;
+  display: flex;
+  gap: 40px;
+}
+
+.book_section {
+  width: calc(100% - 320px);
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 330px));
+  gap: 40px;
+}
+
+.card {
+  width: 100%;
+  height: max-content;
+  min-height: 300px;
+  justify-self: center;
+  border: 2px solid var(--text-color2);
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+}
+
+.card>h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color1);
+  font-weight: 700;
+}
+
+.card>img {
+  width: 85%;
+  max-width: 100%;
+  height: 175px;
+  border-radius: 5px;
+  margin: 12px 0;
+}
+
+.card>.author_element {
+  color: var(--text-color1);
+  font-size: var(--medium-size);
+  font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Geneva, Tahoma,
+    sans-serif;
+  margin-bottom: 10px;
+}
+
+.card>.price_element {
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.buy_btn {
+  width: 50%;
+  margin: 15px 0 5px 0;
+  padding: 6px 0;
+  font-size: var(--medium-size);
+  background: var(--bg-color-6);
+  color: var(--white-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.buy_btn:active {
+  opacity: 0.75;
+}
+
+.buy_btn.bought {
+  background: var(--text-color2);
+  opacity: 1;
+}
+
+/* Filter Box */
+.filter_box {
+  position: sticky;
+  right: 0;
+  top: 160px;
+  width: 320px;
+  min-width: 300px;
+  height: max-content;
+  background: var(--bg-color-1);
+  margin-left: auto;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.range_filter {
+  width: 100%;
+  accent-color: var(--bg-color-3);
+  outline: none;
+  border: none;
+}
+
+.filter_price_text,
+.filter_price_input {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: var(--extra-large-size);
+  font-weight: 700;
+  text-align: center;
+  color: var(--white-color);
+  padding: 3px;
+  transition: all 0.5ms ease-out;
+}
+
+.filter_price_text {
+  text-align: center;
+  padding-right: 10px;
+}
+
+.filter_price_input {
+  width: 85px;
+  margin: 5px auto;
+  background: inherit;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.filter_price_input:focus {
+  border: 2px solid var(--white-color);
+  border-right: none;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.filter_price_input:focus~.filter_price_text {
+  border: 2px solid var(--white-color);
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.filter_price:focus {
+  border: 1px solid var(--white-color);
+  border-radius: 50px;
+}
+
+.language_filter_block {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.language_filter_block>label {
+  width: 60%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0;
+  font-size: var(--medium-size);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.language_filter_block label input[type='radio'] {
+  margin-left: auto;
+  accent-color: var(--bg-color-3);
+  width: 15px;
+  height: 15px;
+}
+
+#reset_btn {
+  width: 100%;
+  cursor: pointer;
+  font-size: var(--medium-size);
+  transition: all 0.3s ease-in;
+  margin: 10px 0;
+}
+
+#reset_btn:hover {
+  background: var(--bg-color-3);
+  border-color: var(--bg-color-3);
+  color: var(--white-color);
+}
+
+#reset_btn.cleared {
+  background: var(--bg-color-7);
+  color: #fff;
+  border-color: var(--bg-color-7);
+}
